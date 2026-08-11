@@ -1,4 +1,5 @@
 import 'dotenv/config';
+
 import express from 'express';
 import { db } from './config/db.js';
 import mainRoute from './routes/index.route.js';

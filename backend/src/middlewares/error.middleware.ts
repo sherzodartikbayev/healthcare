@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
-import BaseError from '../errors/base.error.js';
+import { NextFunction, Request, Response } from "express";
+import BaseError from "../errors/base.error.js";
 
 export default function errorMiddleware(
   error: unknown,
@@ -10,13 +10,15 @@ export default function errorMiddleware(
   if (error instanceof BaseError) {
     return res.status(error.status).json({
       message: error.message,
-      errors: error.errors,
+      ...(error.errors.length > 0 && {
+        errors: error.errors,
+      }),
     });
   }
 
   console.error(error);
 
   return res.status(500).json({
-    message: 'Internal Server Error',
+    message: "Internal Server Error",
   });
 }

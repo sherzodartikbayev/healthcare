@@ -30,7 +30,7 @@ export default [
 
     rules: {
       // Style
-      quotes: ['error', 'single'],
+      // quotes: ['error', 'single'],
       semi: ['error', 'always'],
 
       // TypeScript
