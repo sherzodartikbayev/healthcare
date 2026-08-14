@@ -6,14 +6,27 @@ import mainRoute from './routes/index.route.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import errorMiddleware from './middlewares/error.middleware.js';
+import helmet from 'helmet';
+import rateLimit from "express-rate-limit";
+import hpp from 'hpp';
 
 const app = express();
 
+app.disable("x-powered-by");
+
 // Middlewares
-app.use(express.json());
+app.use(helmet());
+app.use(rateLimit({
+  windowMs: 10 * 60 * 1000,
+  limit: 500,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false
+}));
+app.use(hpp());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
-app.use(cookieParser());
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // Routes
 app.use('/api', mainRoute);

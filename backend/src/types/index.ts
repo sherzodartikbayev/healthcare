@@ -1,12 +1,12 @@
 export type UserRole = "ADMIN" | "DOCTOR"
 
-export interface UserToken {
-    id?: string
-    email: string
-    role: UserRole
+export interface AuthUser {
+    id?: string;
+    email: string;
+    role: UserRole;
 }
 
-export interface User extends UserToken {
+export interface User extends AuthUser {
     name: string
     password: string
 }
