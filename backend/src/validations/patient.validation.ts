@@ -48,9 +48,5 @@ export const createPatientSchema = z.object({
 
 export const updatePatientSchema = createPatientSchema.partial();
 
-export const patientIdSchema = z.object({
-    id: z.string().uuid("Invalid patient ID"),
-});
-
 export type CreatePatientInput = z.infer<typeof createPatientSchema>;
 export type UpdatePatientInput = z.infer<typeof updatePatientSchema>;

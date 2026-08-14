@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { createDoctor, deleteDoctor, getAllDoctors, getOneDoctor, updateDoctor } from "../services/doctor.service.js";
-import { createDoctorSchema, doctorIdSchema, updateDoctorSchema } from "../validations/doctor.validation.js";
+import { createDoctorSchema, updateDoctorSchema } from "../validations/doctor.validation.js";
 import BaseError from "../errors/base.error.js";
+import { idSchema } from "../validations/index.validation.js";
 
 export const getDoctorsController = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -20,7 +21,7 @@ export const getDoctorsController = async (req: Request, res: Response, next: Ne
 
 export const getDoctorController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const idResult = doctorIdSchema.safeParse(req.params);
+        const idResult = idSchema.safeParse(req.params);
         if (!idResult.success) throw BaseError.BadRequest("Invalid doctor ID", idResult.error.issues);
         const { id } = idResult.data;
 
@@ -48,7 +49,7 @@ export const createDoctorController = async (req: Request, res: Response, next: 
 
 export const updateDoctorController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const idResult = doctorIdSchema.safeParse(req.params);
+        const idResult = idSchema.safeParse(req.params);
         if (!idResult.success) throw BaseError.BadRequest("Invalid doctor ID", idResult.error.issues);
         const { id } = idResult.data;
 
@@ -68,7 +69,7 @@ export const updateDoctorController = async (req: Request, res: Response, next: 
 
 export const deleteDoctorController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const idResult = doctorIdSchema.safeParse(req.params);
+        const idResult = idSchema.safeParse(req.params);
         if (!idResult.success) throw BaseError.BadRequest("Invalid doctor ID", idResult.error.issues);
         const { id } = idResult.data;
 

@@ -59,7 +59,3 @@ export const createDoctorSchema = z.object({
 });
 
 export const updateDoctorSchema = createDoctorSchema.partial();
-
-export const doctorIdSchema = z.object({
-    id: z.uuid("Invalid doctor ID"),
-});

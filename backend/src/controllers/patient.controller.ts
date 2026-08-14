@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { createPatient, deletePatient, getPatient, getPatients, updatePatient } from "../services/patient.service.js";
 import BaseError from "../errors/base.error.js";
-import { createPatientSchema, patientIdSchema, updatePatientSchema } from "../validations/patient.validation.js";
+import { createPatientSchema, updatePatientSchema } from "../validations/patient.validation.js";
+import { idSchema } from "../validations/index.validation.js";
 
 export const getPatientsController = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -19,7 +20,7 @@ export const getPatientsController = async (req: Request, res: Response, next: N
 
 export const getPatientController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const idResult = patientIdSchema.safeParse(req.params);
+        const idResult = idSchema.safeParse(req.params);
         if (!idResult.success) throw BaseError.BadRequest("Invalid patient ID");
 
         const { id } = idResult.data;
@@ -49,7 +50,7 @@ export const createPatientController = async (req: Request, res: Response, next:
 
 export const updatePatientController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const idResult = patientIdSchema.safeParse(req.params);
+        const idResult = idSchema.safeParse(req.params);
         if (!idResult.success) throw BaseError.BadRequest("Invalid patient ID", idResult.error.issues);
         const { id } = idResult.data;
 
@@ -66,7 +67,7 @@ export const updatePatientController = async (req: Request, res: Response, next:
 
 export const deletePatientController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const idResult = patientIdSchema.safeParse(req.params);
+        const idResult = idSchema.safeParse(req.params);
         if (!idResult.success) throw BaseError.BadRequest("Invalid patient ID", idResult.error.issues);
         const { id } = idResult.data;
 
