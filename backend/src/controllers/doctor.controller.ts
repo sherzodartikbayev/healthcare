@@ -5,29 +5,30 @@ import BaseError from "../errors/base.error.js";
 
 export const getDoctorsController = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const doctors = await getAllDoctors();
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
 
-        if (!doctors.length) throw BaseError.NotFound('Doctors not found');
+        const result = await getAllDoctors(page, limit);
+        if (!result.doctors.length) throw BaseError.NotFound("Doctors not found");
 
-        return res.status(200).json({ doctors });
+        return res.status(200).json(result);
     } catch (error) {
         console.log(error);
         next(error);
-    };
+    }
 };
 
 export const getDoctorController = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const idResult = doctorIdSchema.safeParse(req.params);
-
         if (!idResult.success) throw BaseError.BadRequest("Invalid doctor ID", idResult.error.issues);
-
         const { id } = idResult.data;
 
         const doctor = await getOneDoctor(id);
-        return res.status(200).json({ doctor });
+        if (!doctor) throw BaseError.NotFound("Doctor not found");
+
+        return res.status(200).json({ success: true, message: "Doctor retrieved successfully", doctor });
     } catch (error) {
-        console.log(error);
         next(error);
     };
 };
@@ -35,14 +36,12 @@ export const getDoctorController = async (req: Request, res: Response, next: Nex
 export const createDoctorController = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const validationResult = createDoctorSchema.safeParse(req.body);
-
         if (!validationResult.success) throw BaseError.BadRequest("Validation failed");
 
         const doctor = await createDoctor(validationResult.data);
 
-        return res.status(201).json({ success: true, message: "Doctor successfully created", doctor });
+        return res.status(201).json({ success: true, message: "Doctor created successfully", doctor });
     } catch (error) {
-        console.log(error);
         next(error);
     };
 };
@@ -50,9 +49,7 @@ export const createDoctorController = async (req: Request, res: Response, next: 
 export const updateDoctorController = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const idResult = doctorIdSchema.safeParse(req.params);
-
         if (!idResult.success) throw BaseError.BadRequest("Invalid doctor ID", idResult.error.issues);
-
         const { id } = idResult.data;
 
         const validationResult = updateDoctorSchema.safeParse(req.body);
@@ -63,23 +60,22 @@ export const updateDoctorController = async (req: Request, res: Response, next: 
 
         const doctor = await updateDoctor(id, validationResult.data);
 
-        return res.status(200).json({ success: true, message: "Doctor updated successfully", doctor });
+        return res.status(200).json({ success: true, message: "Doctor successfully updated", doctor });
     } catch (error) {
         next(error);
     }
 };
+
 export const deleteDoctorController = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const idResult = doctorIdSchema.safeParse(req.params);
         if (!idResult.success) throw BaseError.BadRequest("Invalid doctor ID", idResult.error.issues);
-
         const { id } = idResult.data;
 
         await deleteDoctor(id);
 
-        return res.status(200).json({ success: true, message: 'Doctor successfully deleted' });
+        return res.status(200).json({ success: true, message: 'Doctor deleted successfully' });
     } catch (error) {
-        console.log(error);
         next(error);
     };
 };

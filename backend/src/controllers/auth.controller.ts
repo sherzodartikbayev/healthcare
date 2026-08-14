@@ -25,7 +25,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
         cookies.set(res, 'token', token);
         return res.status(200).json({
-            message: 'User successfully signed in',
+            message: 'User signed in successfully',
             user: {
                 id: user.id,
                 name: user.name,
@@ -34,7 +34,6 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
             },
         });
     } catch (error) {
-        console.log(error);
         next(error);
     }
 };
@@ -60,7 +59,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         cookies.set(res, 'token', token);
 
         res.status(201).json({
-            message: 'User registered',
+            message: 'User registered successfully',
             user: {
                 id: newUser.id,
                 name: newUser.name,
@@ -69,7 +68,6 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
             },
         });
     } catch (error) {
-        console.log(error);
         next(error);
     };
 };
@@ -78,9 +76,8 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
     try {
         cookies.clear(res, 'token');
 
-        return res.status(200).json({ message: "User successfully signed out!" });
+        return res.status(200).json({ message: "User signed out successfully!" });
     } catch (error) {
-        console.log(error);
         next(error);
     };
 };
