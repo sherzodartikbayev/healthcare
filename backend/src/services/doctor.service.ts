@@ -55,7 +55,6 @@ export const createDoctor = async (data: CreateDoctorInput) => {
 export const updateDoctor = async (id: string, data: UpdateDoctorInput,) => {
     try {
         const [existingDoctor] = await db.select().from(doctors).where(eq(doctors.id, id)).limit(1);
-
         if (!existingDoctor) throw BaseError.NotFound("Doctor not found");
 
         const [doctor] = await db.update(doctors)

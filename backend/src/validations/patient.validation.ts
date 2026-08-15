@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const patientFields = {
+export const createPatientSchema = z.object({
     firstName: z.string().min(2, "First name must be at least 2 characters").max(100),
     lastName: z.string().min(2, "Last name must be at least 2 characters").max(100),
     middleName: z.string().max(100).optional().nullable(),
@@ -20,31 +20,7 @@ export const patientFields = {
     weight: z.coerce.number().positive("Weight must be positive").max(999).optional().nullable(),
     height: z.coerce.number().positive("Height must be positive").max(999).optional().nullable(),
     allergies: z.string().optional().nullable(),
-};
-
-
-export const createPatientSchema = z.object({
-    firstName: patientFields.firstName,
-    lastName: patientFields.lastName,
-    middleName: patientFields.middleName,
-    avatarUrl: patientFields.avatarUrl,
-    birthDate: patientFields.birthDate,
-    birthPlace: patientFields.birthPlace,
-    address: patientFields.address,
-    maritalStatus: patientFields.maritalStatus,
-    education: patientFields.education,
-    workplace: patientFields.workplace,
-    phone: patientFields.phone,
-    emergencyPhone: patientFields.emergencyPhone,
-    bloodGroup: patientFields.bloodGroup,
-    rhFactor: patientFields.rhFactor,
-    insurancePolicy: patientFields.insurancePolicy,
-    insuranceProvider: patientFields.insuranceProvider,
-    weight: patientFields.weight,
-    height: patientFields.height,
-    allergies: patientFields.allergies,
 });
-
 
 export const updatePatientSchema = createPatientSchema.partial();
 

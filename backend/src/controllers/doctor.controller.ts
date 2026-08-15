@@ -55,9 +55,7 @@ export const updateDoctorController = async (req: Request, res: Response, next: 
 
         const validationResult = updateDoctorSchema.safeParse(req.body);
 
-        if (!validationResult.success) {
-            throw BaseError.BadRequest("Validation failed", validationResult.error.issues);
-        }
+        if (!validationResult.success) throw BaseError.BadRequest("Validation failed", validationResult.error.issues);
 
         const doctor = await updateDoctor(id, validationResult.data);
 
