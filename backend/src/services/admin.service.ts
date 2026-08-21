@@ -13,6 +13,6 @@ export const getDashboardData = async () => {
         return { doctorsCount, patientsCount, roomsCount };
     } catch (error) {
         console.log(error);
-        throw BaseError.InternalServerError("Error while updating doctor");
+        throw BaseError.InternalServerError("Error while getting dashboard data");
     }
 };

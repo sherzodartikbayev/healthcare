@@ -8,6 +8,7 @@ import {
     varchar,
 } from "drizzle-orm/pg-core";
 import { departments } from "./department.model.js";
+import { sql } from "drizzle-orm";
 
 export const roomStatusEnum = pgEnum("room_status", [
     "ACTIVE",
@@ -20,9 +21,10 @@ export const rooms = pgTable("rooms", {
         onDelete: "restrict",
         onUpdate: "cascade",
     }),
-    roomNumber: varchar("room_number", { length: 50, }).notNull(),
+    roomNumber: integer("room_number").notNull(),
     floor: integer("floor"),
     capacity: integer("capacity").notNull().default(1),
+    patients: uuid("patiens").array().notNull().default(sql`ARRAY[]::uuid[]`),
     description: text("description"),
     status: roomStatusEnum("status").notNull().default("ACTIVE"),
     createdAt: timestamp("created_at").defaultNow().notNull(),
