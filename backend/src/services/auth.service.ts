@@ -42,6 +42,7 @@ export const createUser = async ({ name, email, password, role = "ADMIN" }: User
         return newUser;
     } catch (error) {
         if (error instanceof BaseError) throw error;
+        console.log(error);
         throw BaseError.InternalServerError("Error while creating user");
     }
 };
@@ -66,6 +67,7 @@ export const authenticateUser = async ({ email, password }: { email: string; pas
         };
     } catch (error) {
         if (error instanceof BaseError) throw error;
+        console.log(error);
         throw BaseError.InternalServerError("Error while authenticating user");
     }
 };

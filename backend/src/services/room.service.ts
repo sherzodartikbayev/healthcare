@@ -9,6 +9,7 @@ export const getRooms = async () => {
         const allRooms = await db.select().from(rooms);
         return allRooms;
     } catch (error) {
+        if (error instanceof BaseError) throw error;
         console.log(error);
         throw BaseError.InternalServerError('Error while getting rooms');
     };

@@ -75,6 +75,7 @@ export const deleteMedicalRecordController = async (req: Request, res: Response,
 
         return res.status(200).json({ success: true, message: "Medical record successfully deleted" });
     } catch (error) {
+        console.log(error);
         next(error);
     }
 };

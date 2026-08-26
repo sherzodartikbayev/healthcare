@@ -30,6 +30,7 @@ export const getDoctorController = async (req: Request, res: Response, next: Nex
 
         return res.status(200).json({ success: true, message: "Doctor retrieved successfully", doctor });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };
@@ -43,6 +44,7 @@ export const createDoctorController = async (req: Request, res: Response, next: 
 
         return res.status(201).json({ success: true, message: "Doctor created successfully", doctor });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };
@@ -61,6 +63,7 @@ export const updateDoctorController = async (req: Request, res: Response, next: 
 
         return res.status(200).json({ success: true, message: "Doctor successfully updated", doctor });
     } catch (error) {
+        console.log(error);
         next(error);
     }
 };
@@ -75,6 +78,7 @@ export const deleteDoctorController = async (req: Request, res: Response, next: 
 
         return res.status(200).json({ success: true, message: 'Doctor deleted successfully' });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };

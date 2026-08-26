@@ -27,6 +27,7 @@ export const getAllDoctors = async (page = 1, limit = 10) => {
             },
         };
     } catch (error) {
+        if (error instanceof BaseError) throw error;
         console.log(error);
         throw BaseError.InternalServerError("Error while fetching doctors");
     }
@@ -38,6 +39,7 @@ export const getOneDoctor = async (id: string) => {
         return doctor;
     } catch (error) {
         if (error instanceof BaseError) throw error;
+        console.log(error);
         throw BaseError.InternalServerError("Error while fetching doctor");
     }
 };
@@ -47,6 +49,7 @@ export const createDoctor = async (data: CreateDoctorInput) => {
         const [doctor] = await db.insert(doctors).values(data).returning();
         return doctor;
     } catch (error) {
+        if (error instanceof BaseError) throw error;
         console.log(error);
         throw BaseError.InternalServerError("Error while creating doctor");
     };
@@ -65,6 +68,7 @@ export const updateDoctor = async (id: string, data: UpdateDoctorInput,) => {
         return doctor;
     } catch (error) {
         if (error instanceof BaseError) throw error;
+        console.log(error);
         throw BaseError.InternalServerError("Error while updating doctor");
     }
 };
@@ -76,6 +80,7 @@ export const deleteDoctor = async (id: string) => {
 
         return deletedDoctor;
     } catch (error) {
+        if (error instanceof BaseError) throw error;
         console.log(error);
         throw BaseError.InternalServerError("Error while deleting doctor");
     };

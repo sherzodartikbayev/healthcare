@@ -34,6 +34,7 @@ export const getPatientMedicalRecords = async (patientId: string) => {
 
         return records;
     } catch (error) {
+        if (error instanceof BaseError) throw error;
         console.log(error);
         throw BaseError.InternalServerError("Error while fetching patient medical records");
     }
@@ -92,6 +93,7 @@ export const createMedicalRecord = async (data: CreateMedicalRecordInput) => {
 
         return record;
     } catch (error) {
+        if (error instanceof BaseError) throw error;
         console.log(error);
         throw BaseError.InternalServerError("Error while creating medical record");
     }

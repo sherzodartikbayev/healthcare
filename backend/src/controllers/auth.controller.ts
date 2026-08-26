@@ -34,6 +34,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
             },
         });
     } catch (error) {
+        console.log(error);
         next(error);
     }
 };
@@ -68,6 +69,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
             },
         });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };
@@ -78,6 +80,7 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
 
         return res.status(200).json({ message: "User signed out successfully!" });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };

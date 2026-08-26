@@ -14,6 +14,7 @@ export const getPatientsController = async (req: Request, res: Response, next: N
 
         return res.status(200).json({ success: true, message: "Patients retrieved successfully", result });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };
@@ -30,6 +31,7 @@ export const getPatientController = async (req: Request, res: Response, next: Ne
 
         return res.status(200).json({ success: true, message: "Patient retrieved successfully", patient });
     } catch (error) {
+        console.log(error);
         next(error);
     }
 };
@@ -61,6 +63,7 @@ export const updatePatientController = async (req: Request, res: Response, next:
 
         return res.status(200).json({ success: true, message: "Patient updated successfully", patient });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };
@@ -75,6 +78,7 @@ export const deletePatientController = async (req: Request, res: Response, next:
 
         return res.status(200).json({ success: true, message: "Patient deleted successfully" });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };

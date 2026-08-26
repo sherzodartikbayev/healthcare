@@ -6,6 +6,7 @@ export const getDashboardController = async (req: Request, res: Response, next: 
         const data = await getDashboardData();
         return res.status(200).json({ success: true, message: "Dashboard retrieved successfully", data });
     } catch (error) {
+        console.log(error);
         next(error);
     };
 };
