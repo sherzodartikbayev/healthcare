@@ -71,3 +71,35 @@ export const authenticateUser = async ({ email, password }: { email: string; pas
         throw BaseError.InternalServerError("Error while authenticating user");
     }
 };
+
+export const getCurrentUser = async (id: string) => {
+    try {
+        const [user] = await db
+            .select({
+                id: users.id,
+                name: users.name,
+                email: users.email,
+                role: users.role,
+                status: users.status,
+                createdAt: users.createdAt,
+                updatedAt: users.updatedAt,
+            })
+            .from(users)
+            .where(eq(users.id, id))
+            .limit(1);
+
+        if (!user) {
+            throw BaseError.Unauthorized("User not found");
+        }
+
+        return user;
+    } catch (error) {
+        if (error instanceof BaseError) {
+            throw error;
+        }
+
+        throw BaseError.InternalServerError(
+            "Error while fetching current user"
+        );
+    }
+};

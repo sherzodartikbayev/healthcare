@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { loginSchema, registerSchema } from "../validations/auth.validation.js";
-import { authenticateUser, createUser } from "../services/auth.service.js";
+import { authenticateUser, createUser, getCurrentUser } from "../services/auth.service.js";
 import { jwttoken } from "../utils/jwt.js";
 import { cookies } from "../utils/cookies.js";
 import BaseError from "../errors/base.error.js";
@@ -24,6 +24,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
         });
 
         cookies.set(res, 'token', token);
+
         return res.status(200).json({
             message: 'User signed in successfully',
             user: {
@@ -83,4 +84,17 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
         console.log(error);
         next(error);
     };
+};
+
+export const me = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        if (!req.user?.id) throw BaseError.Unauthorized("Authentication required");
+
+        const user = await getCurrentUser(req?.user?.id);
+
+        return res.status(200).json({ success: true, user });
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
 };
