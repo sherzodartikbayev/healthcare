@@ -1,5 +1,5 @@
 import {type FormEvent, useState} from "react";
-import Input from "../shared/input.tsx";
+import Input from "../ui/input.tsx";
 
 const SearchForm = () => {
   const [search, setSearch] = useState("")
@@ -11,7 +11,7 @@ const SearchForm = () => {
   return (
     <form>
       <Input
-        className='md:min-w-[350px] max-w-[350px] py-3 px-10 md:text-[13px] text-xs bg-white border-none rounded-3xl'
+        className='md:min-w-87.5 max-w-87.5 py-3 px-10 md:text-[13px] text-xs bg-white border-none rounded-3xl'
         icon='/icons/search.svg'
         placeholder='Qidiruv'
         value={search}

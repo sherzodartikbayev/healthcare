@@ -26,6 +26,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
         cookies.set(res, 'token', token);
 
         return res.status(200).json({
+            success: true,
             message: 'User signed in successfully',
             user: {
                 id: user.id,
@@ -61,6 +62,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         cookies.set(res, 'token', token);
 
         res.status(201).json({
+            success: true,
             message: 'User registered successfully',
             user: {
                 id: newUser.id,

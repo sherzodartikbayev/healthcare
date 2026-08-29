@@ -1,6 +1,6 @@
 import SearchForm from "../forms/search.form.tsx";
 import {Link} from "react-router-dom";
-import Userbox from "../shared/user-box.tsx";
+import Userbox from "../ui/user-box.tsx";
 
 const Navbar = () => (
     <header>

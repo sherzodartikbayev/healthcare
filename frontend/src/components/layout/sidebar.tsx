@@ -12,7 +12,7 @@ const Sidebar = () => {
           </Link>
 
           {/* Links */}
-          <ul className='flex flex-col mt-[46px]'>
+          <ul className='flex flex-col mt-11.5'>
             <p className='font-normal text-[14px] text-gray mb-5'>MEDICINE</p>
 
             {SidebarLinks.map((item) => (

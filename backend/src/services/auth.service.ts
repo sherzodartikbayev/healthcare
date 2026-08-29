@@ -88,18 +88,12 @@ export const getCurrentUser = async (id: string) => {
             .where(eq(users.id, id))
             .limit(1);
 
-        if (!user) {
-            throw BaseError.Unauthorized("User not found");
-        }
+        if (!user) throw BaseError.Unauthorized("User not found");
 
         return user;
     } catch (error) {
-        if (error instanceof BaseError) {
-            throw error;
-        }
-
-        throw BaseError.InternalServerError(
-            "Error while fetching current user"
-        );
+        if (error instanceof BaseError) throw error;
+        console.log(error);
+        throw BaseError.InternalServerError("Error while fetching current user");
     }
 };

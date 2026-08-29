@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-  @apply max-w-[1440px] mx-auto w-full;
+  @apply max-w-360 mx-auto w-full;
 }
 
 .d-flex {
@@ -30,4 +30,11 @@ body {
 
 .d-start {
   @apply flex items-center justify-start;
+}
+
+.login-bg {
+  background-image: url('/images/login-bg.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }

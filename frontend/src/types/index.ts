@@ -13,3 +13,7 @@ export interface InputTypes extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   icon?: string;
 }
+
+export interface ChildProps {
+  children: ReactNode;
+}
