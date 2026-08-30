@@ -2,7 +2,7 @@ import type {InputTypes} from "../../types";
 
 const Input = ({id, label, icon, placeholder, value, onChange, error, className, ...props}: InputTypes) => (
   <div className='relative flex flex-col w-full'>
-    {label && <label className="font-semibold md:text-[14px] text-xs text-black mb-1 select-none">{label}</label>}
+    {label && <label className="font-semibold md:text-sm text-xs text-black mb-1 select-none">{label}</label>}
 
     {icon &&
       <img

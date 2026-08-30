@@ -71,7 +71,7 @@ const LoginPage = () => {
               className="w-full d-flex"
               disabled={isPending}
             >
-              <span className="text-center md:text-base text-[14px]">
+              <span className="text-center md:text-base text-sm">
                 {isPending ? "Kirish..." : "Kirish"}
               </span>
             </Button>

@@ -12,7 +12,11 @@ export const getDoctorsController = async (req: Request, res: Response, next: Ne
         const result = await getAllDoctors(page, limit);
         if (!result.doctors.length) throw BaseError.NotFound("Doctors not found");
 
-        return res.status(200).json(result);
+        return res.status(200).json({
+            success: true,
+            message: "Doctors retrieved successfully",
+            result
+        });
     } catch (error) {
         console.log(error);
         next(error);

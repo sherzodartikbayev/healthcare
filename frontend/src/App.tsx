@@ -5,6 +5,10 @@ import DashboardPage from "./pages/dashboard.page.tsx";
 import LoginPage from "./pages/login.page.tsx";
 import AuthInitializer from "./components/shared/auth-initializer.tsx";
 import ProtectedRoute from "./components/shared/protected-route.tsx";
+import DoctorPage from "./pages/doctors.page.tsx";
+import PatientsPage from "./pages/patients.page.tsx";
+import DepartmentsPage from "./pages/departments.page.tsx";
+import RoomsPage from "./pages/rooms.page.tsx";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -25,6 +29,22 @@ const App = () => {
           index: true,
           element: <DashboardPage/>
         },
+        {
+          path: '/rooms',
+          element: <RoomsPage />
+        },
+        {
+          path: '/doctors',
+          element: <DoctorPage />
+        },
+        {
+          path: '/patients',
+          element: <PatientsPage />
+        },
+        {
+          path: '/departments',
+          element: <DepartmentsPage />
+        }
       ]
     }
   ]);

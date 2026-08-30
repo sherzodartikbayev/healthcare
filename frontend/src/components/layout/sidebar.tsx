@@ -13,13 +13,13 @@ const Sidebar = () => {
 
           {/* Links */}
           <ul className='flex flex-col mt-11.5'>
-            <p className='font-normal text-[14px] text-gray mb-5'>MEDICINE</p>
+            <p className='font-normal text-sm text-gray mb-5'>MEDICINE</p>
 
             {SidebarLinks.map((item) => (
               <li key={item.id}>
                 <NavLink to={item.link} className={({isActive}) => `my-3.5 flex gap-3.5 ${isActive ? 'text-blue' : 'text-black'}`}>
                   <img src={item.src} alt={item.label}/>
-                  <p className='font-bold text-[14px] transition-colors hover:text-blue'>{item.label}</p>
+                  <p className='font-bold text-sm transition-colors hover:text-blue'>{item.label}</p>
                 </NavLink>
               </li>
             ))}

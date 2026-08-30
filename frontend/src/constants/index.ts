@@ -21,7 +21,7 @@ export const SidebarLinks = [
     id: 4,
     src: '/icons/departments.svg',
     link: "/departments",
-    label: 'Departments'
+    label: "Bo'limlar"
   },
   {
     id: 5,

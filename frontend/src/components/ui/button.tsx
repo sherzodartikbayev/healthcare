@@ -2,9 +2,9 @@ import type {ButtonTypes} from "../../types";
 
 const Button = ({ children, variant = "none", icon, className = "", isLoading = false, ...props }: ButtonTypes) => {
   const variants = {
-    primary: "bg-blue hover:bg-blue-700 focus:ring-blue-500 text-[14px] px-4 text-white",
-    success: "bg-green hover:bg-blue-700 focus:ring-blue-500 text-[14px] text-white",
-    danger: "bg-green hover:bg-blue-700 focus:ring-blue-500 text-[14px]",
+    primary: "bg-blue hover:bg-blue-700 focus:ring-blue-500 text-sm px-4 text-white",
+    success: "bg-green hover:bg-blue-700 focus:ring-blue-500 text-sm text-white",
+    danger: "bg-green hover:bg-blue-700 focus:ring-blue-500 text-sm",
     none: "p-0 m-0 rounded-none text-black"
   };
 
