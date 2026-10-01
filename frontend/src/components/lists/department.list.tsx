@@ -1,17 +1,17 @@
-import { useDepartments} from "../../hooks/useDepartment.ts";
-import type {DepartmentType} from "../../types/department.type.ts";
+import { useDepartments } from "../../hooks/useDepartment.ts";
+import type { DepartmentType } from "../../types/department.type.ts";
 import DepartmentCard from "../cards/department.card.tsx";
 import DepartmentMobileCard from "../cards/department-mobile.card.tsx";
 
-export const DepartmentList =  () => {
-  const {isLoading, data, error} = useDepartments()
+export const DepartmentList = () => {
+  const { isLoading, data, error } = useDepartments()
   const departments: DepartmentType[] = data?.departments || []
 
   if (isLoading) {
     return (
       <div className="w-full rounded-lg bg-white p-6 shadow-md">
         <div className="space-y-3">
-          {Array.from({length: 5}).map((_, index) => (
+          {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
               className="h-14 w-full animate-pulse rounded-lg bg-gray-100"
@@ -48,19 +48,19 @@ export const DepartmentList =  () => {
       <div className="hidden overflow-x-auto md:block">
         <table className="w-full min-w-225 text-left">
           <thead className="bg-[#E8E8E8] text-sm font-bold">
-          <tr>
-            <th className="whitespace-nowrap px-6 py-4">Nomi</th>
-            <th className="whitespace-nowrap py-4">Izoh</th>
-            <th className="whitespace-nowrap py-4">Oxirgi yangilangan vaqti</th>
-            <th className="whitespace-nowrap py-4">Yaratilgan vaqti</th>
-            <th className="px-6 py-4">Amallar</th>
-          </tr>
+            <tr>
+              <th className="whitespace-nowrap px-6 py-4">Nomi</th>
+              <th className="whitespace-nowrap py-4">Izoh</th>
+              <th className="whitespace-nowrap py-4">Oxirgi yangilangan vaqti</th>
+              <th className="whitespace-nowrap py-4">Yaratilgan vaqti</th>
+              <th className="px-6 py-4">Amallar</th>
+            </tr>
           </thead>
 
           <tbody>
-          {departments && departments.map((department) => (
-            <DepartmentCard key={department.id} department={department} />
-          ))}
+            {departments && departments.map((department) => (
+              <DepartmentCard key={department.id} department={department} />
+            ))}
           </tbody>
         </table>
       </div>
@@ -68,7 +68,7 @@ export const DepartmentList =  () => {
       {/* Mobile */}
       <div className="space-y-3 p-4 md:hidden">
         {departments.map((department) => (
-          <DepartmentMobileCard  key={department.id} department={department}  />
+          <DepartmentMobileCard key={department.id} department={department} />
         ))}
       </div>
     </div>

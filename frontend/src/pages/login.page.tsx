@@ -1,9 +1,10 @@
-import {type FormEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { type FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../components/ui/input.tsx";
 import Button from "../components/ui/button.tsx";
-import {useLogin} from "../hooks/useAuth.ts";
-import {useAuthStore} from "../stores/auth.store.ts";
+import { useLogin } from "../hooks/useAuth.ts";
+import { useAuthStore } from "../stores/auth.store.ts";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -12,16 +13,21 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
 
   const setUser = useAuthStore((state) => state.setUser);
-  const {mutate: login, isPending, error} = useLogin();
+  const { mutate: login, isPending } = useLogin();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    login({email: email.trim(), password},
+    login({ email: email.trim(), password },
       {
-        onSuccess: ({user}) => {
+        onSuccess: ({ user }) => {
           setUser(user);
-          navigate("/", {replace: true});
+          navigate("/", { replace: true });
+          toast.success("Dasturga muvaffaqiyatli kirdingiz!")
+        },
+
+        onError: () => {
+          toast.error("Email yoki parol noto'g'ri");
         },
       }
     );
@@ -60,10 +66,9 @@ const LoginPage = () => {
               onChange={(event) => setPassword(event.target.value)}
               disabled={isPending}
               autoComplete="current-password"
+              minLength={8}
               required
             />
-
-            {error && <p role="alert" className="mb-3 text-sm text-red-500">{error.message}</p>}
 
             <Button
               type="submit"

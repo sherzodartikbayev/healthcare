@@ -1,11 +1,11 @@
-import type {ButtonHTMLAttributes, InputHTMLAttributes, ReactNode} from "react";
+import type { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 
 export interface ButtonTypes extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: "primary" | "success" | "danger" | "none";
+  variant?: "primary" | "success" | "danger" | "none" | "outline";
   className?: string;
   icon?: string;
-  isLoading? : boolean;
+  isLoading?: boolean;
 }
 
 export interface InputTypes extends InputHTMLAttributes<HTMLInputElement> {
@@ -16,4 +16,11 @@ export interface InputTypes extends InputHTMLAttributes<HTMLInputElement> {
 
 export interface ChildProps {
   children: ReactNode;
+}
+
+export interface ModalProps {
+  title: string;
+  description: string;
+  action?: () => void;
+  link?: string;
 }

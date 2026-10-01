@@ -1,4 +1,4 @@
-import PatientList from "../components/lists/patient.list.tsx";
+import PatientList from "../../components/lists/patient.list.tsx";
 
 const PatientsPage = () => {
   return (

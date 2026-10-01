@@ -1,20 +1,8 @@
-import {
-  pgEnum,
-  pgTable,
-  uuid,
-  varchar,
-  timestamp,
-} from 'drizzle-orm/pg-core';
+import { pgEnum, pgTable, uuid, varchar, timestamp } from "drizzle-orm/pg-core";
 
-export const userRoleEnum = pgEnum("user_role", [
-  "ADMIN",
-  "DOCTOR"
-]);
+export const userRoleEnum = pgEnum("user_role", ["ADMIN", "DOCTOR"]);
 
-export const userStatusEnum = pgEnum('user_status', [
-  "ACTIVE",
-  "INACTIVE",
-]);
+export const userStatusEnum = pgEnum("user_status", ["ACTIVE", "INACTIVE"]);
 
 export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),

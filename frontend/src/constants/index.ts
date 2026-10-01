@@ -31,3 +31,24 @@ export const SidebarLinks = [
   },
 ];
 
+export const defaultPatientValues = {
+  firstName: "",
+  lastName: "",
+  middleName: "",
+  birthDate: "",
+  birthPlace: "",
+  address: "",
+  maritalStatus: "",
+  avatarUrl: "",
+  education: "",
+  workplace: "",
+  phone: "",
+  emergencyPhone: "",
+  bloodGroup: "",
+  rhFactor: "",
+  insurancePolicy: "",
+  insuranceProvider: "",
+  weight: "",
+  height: "",
+  allergies: "",
+};

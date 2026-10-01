@@ -1,6 +1,6 @@
 import Button from "../ui/button.tsx";
-import type {DepartmentType} from "../../types/department.type.ts";
-import {format} from "date-fns";
+import type { DepartmentType } from "../../types/department.type.ts";
+import { format } from "date-fns";
 
 const DepartmentCard = ({ department }: { department: DepartmentType }) => {
   return (
@@ -12,10 +12,10 @@ const DepartmentCard = ({ department }: { department: DepartmentType }) => {
       <td className="px-6 py-3">
         <div className="flex items-center gap-5">
           <Button type="button">
-            <img src="/icons/edit.svg" alt="Edit" className="size-4"/>
+            <img src="/icons/edit.svg" alt="Edit" className="size-4" />
           </Button>
           <Button type="button">
-            <img src="/icons/delete.svg" alt="Delete" className="size-4"/>
+            <img src="/icons/delete.svg" alt="Delete" className="size-4" />
           </Button>
         </div>
       </td>

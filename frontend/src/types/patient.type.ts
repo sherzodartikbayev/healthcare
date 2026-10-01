@@ -1,5 +1,5 @@
 export interface PatientType {
-  id?: string,
+  id: string,
   firstName: string,
   lastName: string,
   middleName: string,
@@ -19,8 +19,30 @@ export interface PatientType {
   weight: string,
   height: string,
   allergies: string,
-  createdAt?: string,
-  updatedAt?: string,
+  createdAt: string,
+  updatedAt: string,
+}
+
+export interface CreatePatientType {
+  firstName: string,
+  lastName: string,
+  middleName: string,
+  avatarUrl: string,
+  birthDate: string,
+  birthPlace: string,
+  address: string,
+  maritalStatus: string,
+  education: string,
+  workplace: string,
+  phone: string,
+  emergencyPhone: string,
+  bloodGroup: string,
+  rhFactor: string,
+  insurancePolicy: string,
+  insuranceProvider: string,
+  weight: string,
+  height: string,
+  allergies: string
 }
 
 export type UpdatePatientInput = Partial<PatientType>

@@ -2,6 +2,8 @@ import PatientCard from "../cards/patient.card.tsx";
 import type {PatientType} from "../../types/patient.type.ts";
 import {usePatients} from "../../hooks/usePatient.ts";
 import PatientMobileCard from "../cards/patient-mobile.card.tsx";
+import Button from "../ui/button.tsx";
+import {Link} from "react-router-dom";
 
 interface Props {
   header?: boolean
@@ -10,22 +12,34 @@ interface Props {
 const PatientList = ({header}: Props) => {
   const {isLoading, data, error} = usePatients();
   const patients: PatientType[] = data?.result?.patients ?? [];
-
   if (isLoading) {
-    return (
-      <div className="w-full rounded-lg bg-white p-6 shadow-md">
-        <h2 className="mb-5 font-bold text-lg md:text-xl">
-          Bemorlar
-        </h2>
+    return (<div className="w-full rounded-lg bg-white p-6 shadow-md">
+        <div className="d-between mb-5">
+          <h2 className="font-bold text-lg md:text-xl">Bemorlar</h2>
+          <Link to='/patients/create'>
+            <Button variant="primary" icon="/icons/plus.svg">Yangi bemor qo'shish</Button>
+          </Link>
+        </div>
 
         <div className="space-y-3">
           {Array.from({length: 5}).map((_, index) => (
-            <div
-              key={index}
-              className="h-14 w-full animate-pulse rounded-lg bg-gray-100"
-            />
+            <div key={index} className="h-14 w-full animate-pulse rounded-lg bg-gray-100"/>
           ))}
         </div>
+      </div>
+    );
+  }
+
+  if (patients.length === 0) {
+    return (
+      <div className="w-full rounded-lg bg-white p-6 shadow-md">
+        <div className="d-between mb-5">
+          <h2 className="font-bold text-lg md:text-xl">Bemorlar</h2>
+          <Link to='/patients/create'>
+            <Button variant="primary" icon="/icons/plus.svg">Yangi bemor qo'shish</Button>
+          </Link>
+        </div>
+        <div className="py-10 text-center text-sm text-gray">Bemorlar topilmadi</div>
       </div>
     );
   }
@@ -40,23 +54,14 @@ const PatientList = ({header}: Props) => {
     );
   }
 
-  if (patients.length === 0) {
-    return (
-      <div className="w-full rounded-lg bg-white p-6 shadow-md">
-        <h2 className="mb-5 font-bold text-lg md:text-xl">
-          Bemorlar
-        </h2>
-
-        <div className="py-10 text-center text-sm text-gray">
-          Bemorlar topilmadi
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="w-full overflow-hidden rounded-lg bg-white shadow-md">
-      {header && <h2 className="px-4 pt-5 pb-4 font-bold text-lg md:px-6 md:text-xl">Bemorlar</h2>}
+      <div className="d-between p-4">
+        {header && <h2 className="font-bold text-lg md:text-xl">Bemorlar</h2>}
+        <Link to='/patients/create' className='ml-auto'>
+          <Button variant="primary" icon="/icons/plus.svg">Yangi bemor qo'shish</Button>
+        </Link>
+      </div>
 
       {/* Desktop */}
       <div className="hidden overflow-x-auto md:block">
