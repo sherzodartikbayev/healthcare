@@ -25,7 +25,7 @@ router.get(
 router.post(
   "/record",
   protect,
-  authorize("DOCTOR"),
+  authorize("DOCTOR", "ADMIN"),
   createMedicalRecordController
 );
 router.patch(

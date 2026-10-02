@@ -44,8 +44,8 @@ const LoginPage = () => {
 
           <form onSubmit={handleSubmit}>
             <Input
-              label="Email"
               type="email"
+              label="Email"
               icon="/icons/user.svg"
               placeholder="Email manzilingizni kiriting"
               className="mb-3"
@@ -57,8 +57,8 @@ const LoginPage = () => {
             />
 
             <Input
-              label="Parol"
               type="password"
+              label="Parol"
               icon="/icons/lock.svg"
               placeholder="Parolingizni kiriting"
               className="mb-3"

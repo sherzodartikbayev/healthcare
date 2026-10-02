@@ -12,6 +12,7 @@ import RoomsPage from "./pages/rooms.page.tsx";
 import {ToastContainer} from 'react-toastify';
 import CreatePatient from './pages/patient/create-patient.tsx';
 import UpdatePatient from './pages/patient/update-patient.tsx';
+import PatientDetailPage from "./pages/patient/patient-detail.page.tsx";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const App = () => {
           element: <PatientsPage/>,
         },
         {
+          path: '/patients/:id',
+          element: <PatientDetailPage/>
+        },
+        {
           path: '/departments',
           element: <DepartmentsPage/>
         }
@@ -61,7 +66,7 @@ const App = () => {
     {
       path: '/patients/update/:id',
       element: (
-      <ProtectedRoute>
+        <ProtectedRoute>
           <UpdatePatient/>
         </ProtectedRoute>
       )

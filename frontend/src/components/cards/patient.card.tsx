@@ -47,7 +47,12 @@ const PatientCard = ({patient}: Props) => {
         <td
           className="whitespace-nowrap py-3">{patient.bloodGroup ? `${patient.bloodGroup}${patient.rhFactor || ""}` : "—"}</td>
         <td className="px-6 py-3">
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-2">
+            <Link to={`/patients/${patient.id}`}>
+              <Button>
+                <img src='/icons/eye.svg' alt='eye icon' className='size-5.5' />
+              </Button>
+            </Link>
             <Link to={`/patients/update/${patient.id}`}>
               <Button type="button">
                 <img src="/icons/edit.svg" alt="Edit" className="size-4"/>

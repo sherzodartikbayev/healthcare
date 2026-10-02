@@ -3,6 +3,7 @@ import {useDashboardData} from "../hooks/useAdminDashboard.ts";
 import type {AdminDashboardType} from "../types/admin.type.ts";
 import PatientList from "../components/lists/patient.list.tsx";
 import {DoctorList} from "../components/lists/doctor.list.tsx";
+import ErrorCard from "../components/cards/error.card.tsx";
 
 const DashboardPage = () => {
   const {isLoading, data, error} = useDashboardData();
@@ -30,11 +31,7 @@ const DashboardPage = () => {
           ))}
         </div>
 
-        {error && (
-          <div className="md:p-4 p-2 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm font-medium">
-            Ma'lumotlarni yuklashda xatolik yuz berdi: {error?.message}
-          </div>
-        )}
+        {error && <ErrorCard />}
 
         <PatientList header />
 

@@ -43,3 +43,11 @@ body {
 .section-title {
   @apply font-bold md:text-[40px] text-3xl md:mb-6 mb-4;
 }
+
+.detail-text{
+  @apply font-normal text-sm text-[#606060]
+}
+
+.detail-text-bold {
+  @apply text-base text-black font-bold
+}
