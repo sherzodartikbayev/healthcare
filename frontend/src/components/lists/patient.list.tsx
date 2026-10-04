@@ -56,7 +56,7 @@ const PatientList = ({header}: Props) => {
 
   return (
     <div className="w-full overflow-hidden rounded-lg bg-white shadow-md">
-      <div className="d-between p-4">
+      <div className="d-between py-4 px-6">
         {header && <h2 className="font-bold text-lg md:text-xl">Bemorlar</h2>}
         <Link to='/patients/create' className='ml-auto'>
           <Button variant="primary" icon="/icons/plus.svg">Yangi bemor qo'shish</Button>

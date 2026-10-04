@@ -35,7 +35,7 @@ const DashboardPage = () => {
 
         <PatientList header />
 
-        <div className='my-17.5'/>
+        <div className='my-10'/>
 
         <DoctorList header />
       </div>

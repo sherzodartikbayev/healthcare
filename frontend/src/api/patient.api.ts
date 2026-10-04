@@ -45,9 +45,7 @@ export async function deletePatient(id: string) {
     method: "DELETE",
     credentials: 'include'
   })
-
   if (!response.ok) throw new Error(`Error: ${response.status} ${response.statusText}`);
-
   const result = await response.json();
   return result;
 }

@@ -1,10 +1,10 @@
-import { type FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {type FormEvent, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import Input from "../components/ui/input.tsx";
 import Button from "../components/ui/button.tsx";
-import { useLogin } from "../hooks/useAuth.ts";
-import { useAuthStore } from "../stores/auth.store.ts";
-import { toast } from "react-toastify";
+import {useLogin} from "../hooks/useAuth.ts";
+import {useAuthStore} from "../stores/auth.store.ts";
+import {toast} from "react-toastify";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -12,17 +12,20 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const user = useAuthStore((state) => state.user);
+  if (user) navigate('/', {replace: true});
+
   const setUser = useAuthStore((state) => state.setUser);
-  const { mutate: login, isPending } = useLogin();
+  const {mutate: login, isPending} = useLogin();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    login({ email: email.trim(), password },
+    login({email: email.trim(), password},
       {
-        onSuccess: ({ user }) => {
+        onSuccess: ({user}) => {
           setUser(user);
-          navigate("/", { replace: true });
+          navigate("/", {replace: true});
           toast.success("Dasturga muvaffaqiyatli kirdingiz!")
         },
 
@@ -37,7 +40,7 @@ const LoginPage = () => {
     <section className="login-bg">
       <div className="container h-screen d-flex px-5">
         <div className="md:p-8 md:py-10 py-8 px-5 border-2 border-gray rounded-4xl bg-white">
-          <h3 className="font-bold text-black md:text-2xl text-xl text-center">Kirish</h3>
+          <h3 className="font-bold text-black md:text-2xl text-xl text-center">Tizimga kirish</h3>
           <p className="md:text-base text-xs text-gray mb-5">
             Iltimos dasturga kirish uchun login va parolni kiriting
           </p>

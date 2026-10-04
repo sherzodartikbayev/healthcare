@@ -13,6 +13,8 @@ import {ToastContainer} from 'react-toastify';
 import CreatePatient from './pages/patient/create-patient.tsx';
 import UpdatePatient from './pages/patient/update-patient.tsx';
 import PatientDetailPage from "./pages/patient/patient-detail.page.tsx";
+import CreateMedicalRecordPage from "./pages/medical-record/create-medicalRecord.page.tsx";
+import UpdateMedicalRecordPage from "./pages/medical-record/update-medicalRecord.page.tsx";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -71,6 +73,22 @@ const App = () => {
         </ProtectedRoute>
       )
     },
+    {
+      path: '/medical-record/create',
+      element: (
+        <ProtectedRoute>
+          <CreateMedicalRecordPage />
+        </ProtectedRoute>
+      )
+    },
+    {
+      path: '/medical-record/update/:id',
+      element: (
+        <ProtectedRoute>
+          <UpdateMedicalRecordPage />
+        </ProtectedRoute>
+      )
+    }
   ]);
 
   return (
