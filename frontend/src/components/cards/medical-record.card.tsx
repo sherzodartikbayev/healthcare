@@ -2,9 +2,9 @@ import Button from "../ui/button.tsx";
 import type {MedicalRecordType} from "../../types/medical-record.type.ts";
 import {useModalStore} from "../../stores/modal.store.ts";
 import {toast} from "react-toastify";
-import {useDeletedMedicalRecord} from "../../hooks/useMedicalRecords.ts";
 import Modal from "../shared/modal.tsx";
 import {Link} from "react-router-dom";
+import {useDeleteMedicalRecord} from "../../hooks/useMedicalRecords.ts";
 
 interface Props {
   record: MedicalRecordType
@@ -14,7 +14,7 @@ const MedicalRecordCard = ({record}: Props) => {
   const DoctorOfFullName = `${record.doctor.firstName} ${record.doctor.lastName}`;
 
   const {open, close} = useModalStore();
-  const {mutate: deleteRecordMutation} = useDeletedMedicalRecord();
+  const {mutate: deleteRecordMutation} = useDeleteMedicalRecord();
 
   const handleDelete = () => {
     deleteRecordMutation(record.id, {
@@ -37,7 +37,7 @@ const MedicalRecordCard = ({record}: Props) => {
         <td className="whitespace-nowrap py-3">{DoctorOfFullName || "—"}</td>
         <td className="px-3 py-3">
           <div className="flex items-center gap-5">
-            <Link to={`/medical-record/update/${record.id}`}>
+            <Link to={`/patients/${record.patientId}/medical-record/update/${record.id}`}>
               <Button type="button">
                 <img src="/icons/edit.svg" alt="Edit" className="size-4"/>
               </Button>

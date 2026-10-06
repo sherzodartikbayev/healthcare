@@ -74,7 +74,7 @@ const App = () => {
       )
     },
     {
-      path: '/medical-record/create',
+      path: '/patients/:patientId/medical-record/create',
       element: (
         <ProtectedRoute>
           <CreateMedicalRecordPage />
@@ -82,7 +82,7 @@ const App = () => {
       )
     },
     {
-      path: '/medical-record/update/:id',
+      path: '/patients/:patientId/medical-record/update/:id',
       element: (
         <ProtectedRoute>
           <UpdateMedicalRecordPage />

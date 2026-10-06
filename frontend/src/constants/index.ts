@@ -1,3 +1,5 @@
+import type {MedicalRecordInput} from "../types/medical-record.type.ts";
+
 export const SidebarLinks = [
   {
     id: 1,
@@ -51,4 +53,12 @@ export const defaultPatientValues = {
   weight: "",
   height: "",
   allergies: "",
+};
+
+export const defaultMedicalRecordValues: MedicalRecordInput = {
+  patientId: "",
+  doctorId: "",
+  treatmentDate: "",
+  diseaseType: "",
+  diagnosis: "",
 };
