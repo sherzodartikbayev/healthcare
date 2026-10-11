@@ -1,7 +1,7 @@
 const UpdateDoctorPage = () => {
     return (
         <div>
-
+            Update
         </div>
     );
 };

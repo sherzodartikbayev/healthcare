@@ -1,17 +1,39 @@
-import {Link, useParams} from "react-router-dom";
-import {useDoctor} from "../../hooks/useDoctor.ts";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import {useDeleteDoctor, useDoctor} from "../../hooks/useDoctor.ts";
 import type {DoctorType} from "../../types/doctor.type.ts";
 import Loading from "../../components/shared/loading.tsx";
 import ErrorCard from "../../components/cards/error.card.tsx";
 import {format} from "date-fns";
 import Button from "../../components/ui/button.tsx";
-import MedicalHistoryList from "../../components/lists/medical-history.list.tsx";
+import {useDepartment} from "../../hooks/useDepartment.ts";
+import {useModalStore} from "../../stores/modal.store.ts";
+import Modal from "../../components/shared/modal.tsx";
+import {toast} from "react-toastify";
 
 const DoctorDetailPage = () => {
     const {id} = useParams();
-    const {isLoading, data, isError} = useDoctor(id!);
+    const navigate = useNavigate();
+    const {open, close} = useModalStore()
 
+    const {isLoading, data, isError} = useDoctor(id!);
     const doctor: DoctorType = data?.doctor
+
+    const {data: department} = useDepartment(doctor?.departmentId);
+
+    const {mutate: deleteDoctorMutation} = useDeleteDoctor();
+
+    const handleDelete = () => {
+        deleteDoctorMutation(doctor.id, {
+            onSuccess: () => {
+                toast.success("Shifokor dasturdan o'chirib tashlandi")
+                close();
+                navigate("/doctors");
+            },
+            onError: (error) => {
+                toast.error(error.message)
+            }
+        })
+    }
 
     if (isLoading) return <Loading/>
 
@@ -44,7 +66,7 @@ const DoctorDetailPage = () => {
 
                                     <p className='detail-text flex items-center gap-5'>
                                         Ishlayotgan bo’lim: <span
-                                        className='detail-text-bold'>{doctor.departmentId || "—"}</span>
+                                        className='detail-text-bold'>{department?.department?.name || "—"}</span>
                                     </p>
 
                                     <p className='detail-text flex items-center gap-5'>
@@ -67,14 +89,14 @@ const DoctorDetailPage = () => {
                         </div>
 
                         <div className='flex pt-6.5 pr-6 ml-auto'>
-                            <Link to={`/doctors/update/${doctor.id}`}>
+                            <Link to={`/update/doctors/${doctor.id}`}>
                                 <Button title="Bemor ma'lumotlarini yangilash">
                                     <img src='/icons/edit.svg' alt='Update doctor icon' className='size-4'/>
                                 </Button>
                             </Link>
-                            {/*<Button title="Bemorni dasturdan o'chirib tashlash" onClick={open}>*/}
-                            {/*    <img src='/icons/delete.svg' alt='Delete doctor icon' className='size-4'/>*/}
-                            {/*</Button>*/}
+                            <Button title="Bemorni dasturdan o'chirib tashlash" onClick={open}>
+                                <img src='/icons/delete.svg' alt='Delete doctor icon' className='size-4'/>
+                            </Button>
                         </div>
                     </div>
 
@@ -127,16 +149,13 @@ const DoctorDetailPage = () => {
                         </div>
                     </div>
                 </div>
-
-                {/*  Medical History */}
-                <MedicalHistoryList/>
             </div>
 
-            {/*<Modal*/}
-            {/*    title="Bemorni rostan ham dasturdan o'chirmoqchimisiz?"*/}
-            {/*    description="Bemorni o'chirgandan so'ng ma'lumotlarni qayta tiklash imkoni mavjud emas."*/}
-            {/*    action={handleDelete}*/}
-            {/*/>*/}
+            <Modal
+                title="Bemorni rostan ham dasturdan o'chirmoqchimisiz?"
+                description="Bemorni o'chirgandan so'ng ma'lumotlarni qayta tiklash imkoni mavjud emas."
+                action={handleDelete}
+            />
         </>
     );
 };
