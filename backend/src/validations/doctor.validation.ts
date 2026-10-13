@@ -33,7 +33,7 @@ export const createDoctorSchema = z.object({
     .max(100, "Last name is too long")
     .trim(),
   middleName: z.string().max(100, "Middle name is too long").trim(),
-  avatarUrl: z.url("Invalid avatar URL").optional(),
+  avatarUrl: z.string("Invalid avatar URL").optional(),
   specialization: z.enum(
     doctorSpecializations,
     "Invalid doctor specialization"

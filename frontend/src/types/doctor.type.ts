@@ -33,7 +33,7 @@ export interface CreateDoctorInput {
   maritalStatus: boolean
   education: string
   phone: string
-  emergency: string
+  emergencyPhone: string
   hireDate: string
   employmentType: string
   workSchedule: string

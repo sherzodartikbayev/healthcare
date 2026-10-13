@@ -2,6 +2,8 @@ import {useDoctors} from "../../hooks/useDoctor.ts";
 import type {DoctorType} from "../../types/doctor.type.ts";
 import DoctorCard from "../cards/doctor.card.tsx";
 import DoctorMobileCard from "../cards/doctor-mobile.card.tsx";
+import {Link} from "react-router-dom";
+import Button from "../ui/button.tsx";
 
 interface Props {
     header?: boolean
@@ -14,8 +16,15 @@ export const DoctorList = ({header}: Props) => {
     if (doctors.length === 0) {
         return (
             <div className="w-full rounded-lg bg-white p-6 shadow-md">
+                <div className='d-between'>
+                    <h2 className="font-bold text-lg md:text-xl">Shifokorlar</h2>
+                    <Link to='/create/doctors'>
+                        <Button variant="primary" icon="/icons/plus.svg">Yangi shifokor qo'shish</Button>
+                    </Link>
+                </div>
+
                 <div className="py-10 text-center text-sm text-gray">
-                    Bemorlar topilmadi
+                    Shifokorlar topilmadi
                 </div>
             </div>
         );
@@ -24,6 +33,11 @@ export const DoctorList = ({header}: Props) => {
     if (isLoading) {
         return (
             <div className="w-full rounded-lg bg-white p-6 shadow-md">
+                <h2 className="font-bold text-lg md:text-xl">Shifokorlar</h2>
+                <Link to='/create/doctors'>
+                    <Button variant="primary" icon="/icons/plus.svg">Yangi shifokor qo'shish</Button>
+                </Link>
+
                 <div className="space-y-3">
                     {Array.from({length: 5}).map((_, index) => (
                         <div
@@ -49,7 +63,12 @@ export const DoctorList = ({header}: Props) => {
 
     return (
         <div className="w-full overflow-hidden rounded-lg bg-white shadow-md">
-            {header && <h2 className="px-4 pt-5 pb-4 font-bold text-lg md:px-6 md:text-xl">Shifokorlar</h2>}
+            <div className='d-between px-4 py-4 md:px-6'>
+                {header && <h2 className="font-bold text-lg md:text-xl">Shifokorlar</h2>}
+                <Link to='/create/doctors' className='ml-auto'>
+                    <Button variant="primary" icon="/icons/plus.svg">Yangi shifokor qo'shish</Button>
+                </Link>
+            </div>
 
             {/* Desktop */}
             <div className="hidden overflow-x-auto md:block">

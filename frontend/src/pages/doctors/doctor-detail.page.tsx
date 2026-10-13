@@ -125,7 +125,7 @@ const DoctorDetailPage = () => {
                             <div className='flex flex-col gap-4.5 w-1/3'>
                                 <p className='detail-text flex items-center gap-11'>
                                     Oilaviy holat <span
-                                    className='detail-text-bold'>{doctor.maritalStatus && "Oilali" || "—"}</span>
+                                    className='detail-text-bold'>{doctor.maritalStatus ? "Oilali" : "Oila qurmagan"}</span>
                                 </p>
 
                                 <p className='detail-text flex items-center gap-15'>
