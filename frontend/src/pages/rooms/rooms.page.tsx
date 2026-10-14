@@ -1,4 +1,4 @@
-import RoomList from "../components/lists/room.list.tsx";
+import RoomList from "../../components/lists/room.list.tsx";
 
 const RoomsPage = () => {
   return (

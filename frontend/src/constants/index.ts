@@ -1,5 +1,6 @@
 import type {MedicalRecordInput} from "../types/medical-record.type.ts";
 import type {CreateDoctorInput} from "../types/doctor.type.ts";
+import type {CreateRoomInput} from "../types/room.type.ts";
 
 export const SidebarLinks = [
     {
@@ -82,3 +83,13 @@ export const defaultDoctorValues: CreateDoctorInput = {
     employmentType: "",
     workSchedule: ""
 }
+
+export const defaultRoomValues: CreateRoomInput = {
+    departmentId: "",
+    roomNumber: '1',
+    floor: 1,
+    capacity: 1,
+    description: "",
+    patients: [],
+    status: "ACTIVE",
+};

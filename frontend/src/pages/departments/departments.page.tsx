@@ -1,4 +1,4 @@
-import DepartmentList from "../components/lists/department.list.tsx";
+import DepartmentList from "../../components/lists/department.list.tsx";
 
 const DepartmentsPage = () => {
   return (

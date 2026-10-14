@@ -7,8 +7,8 @@ import AuthInitializer from "./components/shared/auth-initializer.tsx";
 import ProtectedRoute from "./components/shared/protected-route.tsx";
 import DoctorPage from "./pages/doctors/doctors.page.tsx";
 import PatientsPage from "./pages/patient/patients.page.tsx";
-import DepartmentsPage from "./pages/departments.page.tsx";
-import RoomsPage from "./pages/rooms.page.tsx";
+import DepartmentsPage from "./pages/departments/departments.page.tsx";
+import RoomsPage from "./pages/rooms/rooms.page.tsx";
 import {ToastContainer} from 'react-toastify';
 import CreatePatient from './pages/patient/create-patient.tsx';
 import UpdatePatient from './pages/patient/update-patient.tsx';
@@ -18,6 +18,10 @@ import UpdateMedicalRecordPage from "./pages/medical-record/update-medicalRecord
 import DoctorDetailPage from "./pages/doctors/doctor-detail.page.tsx";
 import CreateDoctorPage from "./pages/doctors/create-doctor.page.tsx";
 import UpdateDoctorPage from "./pages/doctors/update-doctor.page.tsx";
+import CreateDepartmentPage from "./pages/departments/create-department.page.tsx";
+import UpdateDepartmentPage from "./pages/departments/update-department.page.tsx";
+import UpdateRoomsPage from "./pages/rooms/update-rooms.page.tsx";
+import CreateRoomsPage from "./pages/rooms/create-rooms.page.tsx";
 
 const App = () => {
     const router = createBrowserRouter([
@@ -112,6 +116,40 @@ const App = () => {
             element: (
                 <ProtectedRoute>
                     <UpdateMedicalRecordPage/>
+                </ProtectedRoute>
+            )
+        },
+        // Departments
+        {
+            path: '/create/departments',
+            element: (
+                <ProtectedRoute>
+                    <CreateDepartmentPage/>
+                </ProtectedRoute>
+            )
+        },
+        {
+            path: '/update/departments/:id',
+            element: (
+                <ProtectedRoute>
+                    <UpdateDepartmentPage/>
+                </ProtectedRoute>
+            )
+        },
+        //     Rooms
+        {
+            path: '/create/rooms',
+            element: (
+                <ProtectedRoute>
+                    <CreateRoomsPage />
+                </ProtectedRoute>
+            )
+        },
+        {
+            path: '/update/rooms/:id',
+            element: (
+                <ProtectedRoute>
+                    <UpdateRoomsPage/>
                 </ProtectedRoute>
             )
         }

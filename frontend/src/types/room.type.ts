@@ -11,4 +11,14 @@ export interface RoomType {
   updatedAt: string
 }
 
-export type UpdateRoomType = Partial<RoomType>
+export interface CreateRoomInput {
+  departmentId: string
+  roomNumber: string
+  floor: number
+  capacity: number
+  patients: string[]
+  description?: string | null
+  status: string
+}
+
+export type UpdateRoomInput = Partial<CreateRoomInput>
