@@ -30,7 +30,7 @@ const PatientCard = ({patient}: Props) => {
     <>
       <tr className="border-b border-t border-gray text-sm text-gray-dark">
         <td className="px-6 py-3">
-          <div className="flex items-center gap-3">
+          <div className="min-w-40 flex items-center gap-3">
             <img
               src={patient.avatarUrl || "/images/user.png"}
               alt={`${patient.firstName} ${patient.lastName}`}
@@ -50,7 +50,7 @@ const PatientCard = ({patient}: Props) => {
           <div className="flex items-center gap-2">
             <Link to={`/patients/${patient.id}`}>
               <Button>
-                <img src='/icons/eye.svg' alt='eye icon' className='size-5.5' />
+                <img src='/icons/eye.svg' alt='eye icon' className='size-5' />
               </Button>
             </Link>
             <Link to={`/patients/update/${patient.id}`}>

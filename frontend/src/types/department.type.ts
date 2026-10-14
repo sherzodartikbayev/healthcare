@@ -6,4 +6,9 @@ export interface DepartmentType {
   updatedAt: string
 }
 
-export type UpdateDepartmentType = Partial<DepartmentType>
+export interface CreateDepartmentInput {
+  name: string
+  description: string
+}
+
+export type UpdateDepartmentInput = Partial<CreateDepartmentInput>

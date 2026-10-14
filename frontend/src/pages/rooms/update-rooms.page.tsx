@@ -32,7 +32,6 @@ const UpdateRoomPage = () => {
 
     const handleSubmit = (room: CreateRoomInput) => {
         if (!id) return;
-
         updateRoom({id, room}, {
             onSuccess: () => {
                 toast.success("Xona ma'lumotlari yangilandi.");

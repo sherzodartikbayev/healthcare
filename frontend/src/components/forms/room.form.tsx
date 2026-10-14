@@ -62,7 +62,7 @@ const RoomForm = ({initialValues, onSubmit, isPending = false, submitText = "Saq
                     name="roomNumber"
                     type="number"
                     label="Xona raqami:"
-                    value={String(room.roomNumber)}
+                    value={room.roomNumber}
                     onChange={handleChange}
                     disabled={isPending}
                     min="1"
@@ -73,7 +73,7 @@ const RoomForm = ({initialValues, onSubmit, isPending = false, submitText = "Saq
                     name="floor"
                     type="number"
                     label="Qavat:"
-                    value={String(room.floor)}
+                    value={room.floor}
                     onChange={handleChange}
                     disabled={isPending}
                     min="0"
@@ -84,7 +84,7 @@ const RoomForm = ({initialValues, onSubmit, isPending = false, submitText = "Saq
                     name="capacity"
                     type="number"
                     label="Sig'imi:"
-                    value={String(room.capacity)}
+                    value={room.capacity}
                     onChange={handleChange}
                     disabled={isPending}
                     min="1"

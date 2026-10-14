@@ -1,7 +1,7 @@
 export interface RoomType {
   id: string
   departmentId: string
-  roomNumber: string
+  roomNumber: number
   floor: number
   capacity: number
   patients: string[]
@@ -13,7 +13,7 @@ export interface RoomType {
 
 export interface CreateRoomInput {
   departmentId: string
-  roomNumber: string
+  roomNumber: number
   floor: number
   capacity: number
   patients: string[]

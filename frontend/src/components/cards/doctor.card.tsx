@@ -30,7 +30,7 @@ const DoctorCard = ({doctor}: { doctor: DoctorType }) => {
         <>
             <tr className="border-b border-t border-gray text-sm text-gray-dark">
                 <td className="px-6 py-3">
-                    <div className="flex items-center gap-3">
+                    <div className="min-w-40 flex items-center gap-3">
                         <img
                             src={doctor.avatarUrl || "/images/user.png"}
                             alt={`${doctor.firstName} ${doctor.lastName}`}
@@ -47,7 +47,7 @@ const DoctorCard = ({doctor}: { doctor: DoctorType }) => {
                 <td className="px-6 py-3">
                     <div className="flex items-center gap-5">
                         <Link to={`/doctors/${doctor.id}`}>
-                            <img src='/icons/eye.svg' alt='See doctor detail page' className='size-4'/>
+                            <img src='/icons/eye.svg' alt='See doctor detail page' className='size-5'/>
                         </Link>
                         <Link to={`/update/doctors/${doctor.id}`}>
                             <Button type="button">
