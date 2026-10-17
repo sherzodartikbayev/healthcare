@@ -1,6 +1,6 @@
 import type {CreateRoomInput, UpdateRoomInput} from "../types/room.type.ts";
 
-const BASE_URL = 'http://localhost:8080'
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export async function getRooms() {
     const response = await fetch(`${BASE_URL}/api/room`, {credentials: 'include'})

@@ -25,13 +25,11 @@ export const getPatientsController = async (
     const result = await getPatients(page, limit);
     if (!result.patients.length) throw BaseError.NotFound("Patients not found");
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Patients retrieved successfully",
-        result,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Patients retrieved successfully",
+      result,
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -52,13 +50,11 @@ export const getPatientController = async (
     const patient = await getPatient(id);
     if (!patient) throw BaseError.NotFound("Patient not found");
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Patient retrieved successfully",
-        patient,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Patient retrieved successfully",
+      patient,
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -80,13 +76,11 @@ export const createPatientController = async (
 
     const patient = await createPatient(validationResult.data);
 
-    return res
-      .status(201)
-      .json({
-        success: true,
-        message: "Patient created successfully",
-        patient,
-      });
+    return res.status(201).json({
+      success: true,
+      message: "Patient created successfully",
+      patient,
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -110,13 +104,11 @@ export const updatePatientController = async (
 
     const patient = await updatePatient(id, validationResult.data);
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Patient updated successfully",
-        patient,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Patient updated successfully",
+      patient,
+    });
   } catch (error) {
     console.log(error);
     next(error);

@@ -1,6 +1,6 @@
 import type {CreateDoctorInput, UpdateDoctorInput} from "../types/doctor.type.ts";
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export async function getDoctors() {
     const response = await fetch(`${BASE_URL}/api/doctor`, {credentials: 'include'});

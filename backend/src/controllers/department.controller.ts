@@ -22,13 +22,11 @@ export const getDepartmentsController = async (
     const departments = await getDepartments();
     if (!departments.length) throw BaseError.NotFound("Departments not found");
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Departments retrieved successfully",
-        departments,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Departments retrieved successfully",
+      departments,
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -48,13 +46,11 @@ export const getDepartmentController = async (
     const department = await getDepartment(id);
     if (!department) throw BaseError.NotFound("Departments not found");
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Department retrieved successfully",
-        department,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Department retrieved successfully",
+      department,
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -74,13 +70,11 @@ export const createDepartmentController = async (
 
     const department = await createDepartment(data);
 
-    return res
-      .status(201)
-      .json({
-        success: true,
-        message: "Department created successfully",
-        department,
-      });
+    return res.status(201).json({
+      success: true,
+      message: "Department created successfully",
+      department,
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -104,13 +98,11 @@ export const updateDepartmentController = async (
 
     const department = await updateDepartment(id, data);
 
-    return res
-      .status(201)
-      .json({
-        success: true,
-        message: "Department updated successfully",
-        department,
-      });
+    return res.status(201).json({
+      success: true,
+      message: "Department updated successfully",
+      department,
+    });
   } catch (error) {
     console.log(error);
     next(error);

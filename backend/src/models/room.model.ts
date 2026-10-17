@@ -4,7 +4,7 @@ import {
   pgTable,
   text,
   timestamp,
-  uuid
+  uuid,
 } from "drizzle-orm/pg-core";
 import { departments } from "./department.model.js";
 import { sql } from "drizzle-orm";

@@ -8,13 +8,11 @@ export const getDashboardController = async (
 ) => {
   try {
     const data = await getDashboardData();
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Dashboard retrieved successfully",
-        data,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Dashboard retrieved successfully",
+      data,
+    });
   } catch (error) {
     console.log(error);
     next(error);

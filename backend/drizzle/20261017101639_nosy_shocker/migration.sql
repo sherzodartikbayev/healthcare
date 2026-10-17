@@ -1,0 +1,1 @@
+ALTER TABLE "rooms" ALTER COLUMN "room_number" SET DATA TYPE integer USING "room_number"::integer;

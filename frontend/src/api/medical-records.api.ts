@@ -1,6 +1,6 @@
 import type {MedicalRecordInput, UpdateMedicalRecordInput} from "../types/medical-record.type.ts";
 
-const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export async function getMedicalRecords(id: string) {
   const response = await fetch(`${BASE_URL}/medical/patient/${id}`, {credentials: "include"});

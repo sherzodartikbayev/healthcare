@@ -53,13 +53,11 @@ export const getMedicalRecordController = async (
 
     const record = await getOneMedicalRecord(result.data.id);
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Medical record retrieved successfully",
-        record,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Medical record retrieved successfully",
+      record,
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -81,13 +79,11 @@ export const createMedicalRecordController = async (
 
     const record = await createMedicalRecord(validationResult.data);
 
-    return res
-      .status(201)
-      .json({
-        success: true,
-        message: "Medical record successfully created",
-        record,
-      });
+    return res.status(201).json({
+      success: true,
+      message: "Medical record successfully created",
+      record,
+    });
   } catch (error) {
     console.log(error);
     next(error);
@@ -119,13 +115,11 @@ export const updateMedicalRecordController = async (
       validationResult.data
     );
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Medical record successfully updated",
-        record,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Medical record successfully updated",
+      record,
+    });
   } catch (error) {
     console.log(error);
     next(error);

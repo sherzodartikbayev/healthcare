@@ -50,13 +50,11 @@ export const getDoctorController = async (
     const doctor = await getOneDoctor(id);
     if (!doctor) throw BaseError.NotFound("Doctor not found");
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "Doctor retrieved successfully",
-        doctor,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Doctor retrieved successfully",
+      doctor,
+    });
   } catch (error) {
     console.log(error);
     next(error);
