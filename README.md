@@ -2,7 +2,7 @@
 
 <img width="1920" height="1080" alt="healthcare" src="https://github.com/user-attachments/assets/bac722cd-d478-42e2-8abb-c5c77368e566" />
 
-<p id="description">**Healthcare** is a modern management system designed to digitize and automate operational workflows for private hospitals and medical centers. The platform eliminates paper-based processes, improves patient care quality, and seamlessly connects hospital departments into a single, intuitive interface.</p>
+<p id="description">Healthcare is a modern management system designed to digitize and automate operational workflows for private hospitals and medical centers. The platform eliminates paper-based processes, improves patient care quality, and seamlessly connects hospital departments into a single, intuitive interface.</p>
 
 ## 🎯 Key Features & Business Value
 
