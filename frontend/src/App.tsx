@@ -22,6 +22,7 @@ import CreateDepartmentPage from "./pages/departments/create-department.page.tsx
 import UpdateDepartmentPage from "./pages/departments/update-department.page.tsx";
 import UpdateRoomsPage from "./pages/rooms/update-rooms.page.tsx";
 import CreateRoomsPage from "./pages/rooms/create-rooms.page.tsx";
+import RegisterAdminPage from "./pages/register-admin.page.tsx";
 
 const App = () => {
     const router = createBrowserRouter([
@@ -65,6 +66,10 @@ const App = () => {
                 {
                     path: '/departments',
                     element: <DepartmentsPage/>
+                },
+                {
+                    path: '/admin',
+                    element: <RegisterAdminPage />
                 }
             ]
         },

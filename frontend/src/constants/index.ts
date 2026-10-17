@@ -33,6 +33,12 @@ export const SidebarLinks = [
         link: "/patients",
         label: 'Bemorlar'
     },
+    {
+        id: 6,
+        src: '/icons/doctors.svg',
+        link: "/admin",
+        label: 'Adminlar'
+    },
 ];
 
 export const defaultPatientValues = {
@@ -86,7 +92,7 @@ export const defaultDoctorValues: CreateDoctorInput = {
 
 export const defaultRoomValues: CreateRoomInput = {
     departmentId: "",
-    roomNumber: '1',
+    roomNumber: 1,
     floor: 1,
     capacity: 1,
     description: "",
