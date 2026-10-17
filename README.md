@@ -1,10 +1,10 @@
-<h1 align="center">🏥 Healthcare — Private Hospital Management & Automation System</h1>
+<h1 align="center">🏥 Healthcare — Private Hospital Management and Automation System</h1>
 
 <img width="1920" height="1080" alt="healthcare" src="https://github.com/user-attachments/assets/bac722cd-d478-42e2-8abb-c5c77368e566" />
 
 <p id="description">Healthcare is a modern management system designed to digitize and automate operational workflows for private hospitals and medical centers. The platform eliminates paper-based processes, improves patient care quality, and seamlessly connects hospital departments into a single, intuitive interface.</p>
 
-## 🎯 Key Features & Business Value
+## 🎯 Features
 
 * 👥 **Patient Management:** Effortlessly register new patients, retrieve medical history, and access profiles instantly.
 * 📋 **Electronic Health Records (EHR):** Securely store diagnoses, doctor's notes, prescriptions, and complete treatment histories digitally.
@@ -13,7 +13,7 @@
 * 🛏️ **Ward & Bed Occupancy:** Real-time tracking of room availability, bed occupancy, and patient ward assignments.
 * 🛡️ **Role-Based Security:** Custom access levels for Admins, Doctors, and Receptionists so staff members only access information relevant to their role.
 
-## 💻 Tech Stack (For Developers)
+## 💻 Tech Stack 
 
 * **Frontend:** React.js (Vite), Tailwind CSS, Zustand, React Query
 * **Backend:** Node.js, Express.js, TypeScript
