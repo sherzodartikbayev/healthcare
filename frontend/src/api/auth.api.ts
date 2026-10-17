@@ -1,10 +1,12 @@
-import type {LoginData, LoginResponse} from "../types/user.types.ts";
+import type { LoginData, LoginResponse } from "../types/user.types.ts";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export async function getMe() {
   try {
-    const response = await fetch(`${BASE_URL}/api/auth/me`, {credentials: 'include'});
+    const response = await fetch(`${BASE_URL}/api/auth/me`, {
+      credentials: "include",
+    });
     if (!response.ok) throw new Error("Unauthorized");
     const data = await response.json();
     return data;
@@ -19,7 +21,7 @@ export const loginRequest = async (data: LoginData): Promise<LoginResponse> => {
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(data),
   });
 
