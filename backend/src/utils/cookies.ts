@@ -3,8 +3,8 @@ import { CookieOptions, Request, Response } from "express";
 export const cookies = {
   getOptions: (): CookieOptions => ({
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    secure: true,
+    sameSite: "none",
     maxAge: 15 * 60 * 1000,
   }),
 
